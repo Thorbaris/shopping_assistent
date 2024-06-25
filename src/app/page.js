@@ -6,14 +6,14 @@ import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 export default function Home() {
-  const [gr, setGrMl] = useState(0);
-  const [precio, setPrecio] = useState(0);
-  const [precioKiloLitro, setPrecioKilo] = useState(0);
+  const [gr, setGrMl] = useState('');
+  const [precio, setPrecio] = useState('');
+  const [precioKiloLitro, setPrecioKilo] = useState('');
 
-  const [cantidad_rollos, setCantidadRollos] = useState(0);
-  const [metros_rollo, setMetrosRollo] = useState(0);
-  const [precioConfort, setPrecioConfort] = useState(0);
-  const [precioPorMetroConfort, setPrecioMetroConfort] = useState(0);
+  const [cantidad_rollos, setCantidadRollos] = useState('');
+  const [metros_rollo, setMetrosRollo] = useState('');
+  const [precioConfort, setPrecioConfort] = useState('');
+  const [precioPorMetroConfort, setPrecioMetroConfort] = useState('');
 
   const handleChange = (event) => {
     setGrMl(Number(event.target.value));
@@ -47,16 +47,16 @@ export default function Home() {
   }
 
   const limpiarKg = () => {
-    setGrMl(0);
-    setPrecio(0);
-    setPrecioKilo(0);
+    setGrMl('');
+    setPrecio('');
+    setPrecioKilo('');
   }
 
   const limpiarConfort = () => {
-    setCantidadRollos(0);
-    setMetrosRollo(0);
-    setPrecioConfort(0);
-    setPrecioMetroConfort(0);
+    setCantidadRollos('');
+    setMetrosRollo('');
+    setPrecioConfort('');
+    setPrecioMetroConfort('');
   }
   
   return (
