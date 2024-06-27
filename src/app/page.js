@@ -7,6 +7,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import Footer from "./components/Footer/Footer";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
+import InputAdornment from '@mui/material/InputAdornment';
 
 export default function Home() {
   const [gr, setGrMl] = useState('');
@@ -69,7 +70,7 @@ export default function Home() {
       <div className="justify-center flex flex-col gap-4">
         <Card className="2xl:w-3/5 mx-auto p-3 flex flex-col gap-2 my-3">
           <div className="flex gap-2 mb-2">
-            <h4>Calcular precio por Kg/Lt</h4>
+            <h4>Calcular precio por kg/Lt</h4>
               <DeleteIcon className="text-red-600"  onClick={limpiarKg}/>
           </div>
           <CardActions className="flex flex-col gap-2">
@@ -90,6 +91,9 @@ export default function Home() {
                 value={precio}
                 style={{ backgroundColor: "white" }}
                 onChange={handlePrecio}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                }}
               />
             </div>
             
@@ -104,6 +108,9 @@ export default function Home() {
                 value={precioKiloLitro}
                 style={{ backgroundColor: "white" }}
                 disabled
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                }}
               />
               </div>          
           </CardActions>
@@ -111,8 +118,8 @@ export default function Home() {
 
         <Card className="2xl:w-3/5 mx-auto p-3 flex flex-col gap-2 my-3">
           <div className="flex gap-2 mb-2">
-            <h4>Calcular precio por metro de confort</h4>
-            <DeleteIcon className="text-red-600"  onClick={limpiarConfort}/>
+            <h4>Calcular precio por metro de papel higiénico</h4>
+            <DeleteIcon className="text-red-600" onClick={limpiarConfort}/>
           </div>
           <CardActions className="flex flex-col gap-2">
             <div className="flex gap-2">
@@ -136,10 +143,14 @@ export default function Home() {
               <TextField
                 id="outlined-basic"
                 label="Precio"
+                type="number"
                 variant="outlined"
                 value={precioConfort}            
                 onChange={handlePrecioConfort}
                 style={{ backgroundColor: "white" }}
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                }}
               />
             </div>
             <div className="flex gap-2">
@@ -149,11 +160,14 @@ export default function Home() {
 
               <TextField
                 id="outlined-basic"
-                label="Precio por metro de confort"
+                label="Precio por metro de papel higiénico"
                 variant="outlined"
                 value={precioPorMetroConfort}
                 style={{ backgroundColor: "white" }}
                 disabled
+                InputProps={{
+                  startAdornment: <InputAdornment position="start">$</InputAdornment>,
+                }}
               />
             </div>
           </CardActions>
