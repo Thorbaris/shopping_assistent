@@ -4,6 +4,9 @@ import TextField from "@mui/material/TextField";
 import { useState } from "react";
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
+import Footer from "./components/Footer/Footer";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
 
 export default function Home() {
   const [gr, setGrMl] = useState('');
@@ -60,93 +63,104 @@ export default function Home() {
   }
   
   return (
-    <main className="px-4">
+    <>
+    <main className=" justify-center px-4 h-[100%]">
       <h1 className="my-4 mb-7 text-center text-slate-400">Asistente de compras</h1>
-      <div className="flex flex-col gap-4">
-        <section className="flex flex-col gap-2 my-3">
+      <div className="justify-center flex flex-col gap-4">
+        <Card className="2xl:w-3/5 mx-auto p-3 flex flex-col gap-2 my-3">
           <div className="flex gap-2 mb-2">
             <h4>Calcular precio por Kg/Lt</h4>
               <DeleteIcon className="text-red-600"  onClick={limpiarKg}/>
           </div>
-          <div className="flex gap-2">
-            <TextField
-              value={gr}
-              onChange={handleChange}
-              id="outlined-basic"
-              label="gr / ml"
-              variant="outlined"
-              type="number" // Asegúrese de que el campo solo acepte números
-              style={{ backgroundColor: "white" }}
-            />
-            <TextField
-              id="outlined-basic"
-              label="Precio"
-              variant="outlined"
-              value={precio}
-              style={{ backgroundColor: "white" }}
-              onChange={handlePrecio}
-            />
+          <CardActions className="flex flex-col gap-2">
+            <div className="flex gap-2">
+              <TextField
+                value={gr}
+                onChange={handleChange}
+                id="outlined-basic"
+                label="gr / ml"
+                variant="outlined"
+                type="number" // Asegúrese de que el campo solo acepte números
+                style={{ backgroundColor: "white" }}
+              />
+              <TextField
+                id="outlined-basic"
+                label="Precio"
+                variant="outlined"
+                value={precio}
+                style={{ backgroundColor: "white" }}
+                onChange={handlePrecio}
+              />
+            </div>
+            
+            <div className="flex gap-2">
+              <Button onClick={ calcularTotalKiloLitro } variant="contained" color="primary">
+                Calcular
+              </Button>
+              <TextField
+                id="outlined-basic"
+                label="Precio por kilo / litro"
+                variant="outlined"
+                value={precioKiloLitro}
+                style={{ backgroundColor: "white" }}
+                disabled
+              />
+              </div>          
+          </CardActions>
+        </Card>
 
-            <Button onClick={ calcularTotalKiloLitro } variant="contained" color="primary">
-              Calcular
-            </Button>
-
-            <TextField
-              id="outlined-basic"
-              label="Precio por kilo / litro"
-              variant="outlined"
-              value={precioKiloLitro}
-              style={{ backgroundColor: "white" }}
-              disabled
-            />
-          </div>
-        </section>
-
-        <section className="flex flex-col gap-2 my-3">
+        <Card className="2xl:w-3/5 mx-auto p-3 flex flex-col gap-2 my-3">
           <div className="flex gap-2 mb-2">
             <h4>Calcular precio por metro de confort</h4>
             <DeleteIcon className="text-red-600"  onClick={limpiarConfort}/>
           </div>
-          <div className="flex gap-2">
-            <TextField
-              id="outlined-basic"
-              label="Cantida de rollos"
-              variant="outlined"
-              type="number" // Asegúrese de que el campo solo acepte números
-              value={cantidad_rollos}
-              onChange={handleChangeCantidadRollos}
-              style={{ backgroundColor: "white" }}
-            />
-            <TextField
-              id="outlined-basic"
-              label="Metros por rollo"
-              variant="outlined"
-              value={metros_rollo}
-              onChange={handleChangeMetrosRollo}
-              style={{ backgroundColor: "white" }}
-            />
-            <TextField
-              id="outlined-basic"
-              label="Precio"
-              variant="outlined"
-              value={precioConfort}            
-              onChange={handlePrecioConfort}
-              style={{ backgroundColor: "white" }}
-            />
-            <Button onClick={ calcularTotalMetroConfort } variant="contained" color="primary">
-              Calcular
-            </Button>
-            <TextField
-              id="outlined-basic"
-              label="Precio por metro de confort"
-              variant="outlined"
-              value={precioPorMetroConfort}
-              style={{ backgroundColor: "white" }}
-              disabled
-            />
-          </div>
-        </section>
+          <CardActions className="flex flex-col gap-2">
+            <div className="flex gap-2">
+              <TextField
+                id="outlined-basic"
+                label="Cantida de rollos"
+                variant="outlined"
+                type="number" // Asegúrese de que el campo solo acepte números
+                value={cantidad_rollos}
+                onChange={handleChangeCantidadRollos}
+                style={{ backgroundColor: "white" }}
+              />
+              <TextField
+                id="outlined-basic"
+                label="Metros por rollo"
+                variant="outlined"
+                value={metros_rollo}
+                onChange={handleChangeMetrosRollo}
+                style={{ backgroundColor: "white" }}
+              />
+              <TextField
+                id="outlined-basic"
+                label="Precio"
+                variant="outlined"
+                value={precioConfort}            
+                onChange={handlePrecioConfort}
+                style={{ backgroundColor: "white" }}
+              />
+            </div>
+            <div className="flex gap-2">
+              <Button onClick={ calcularTotalMetroConfort } variant="contained" color="primary">
+                Calcular
+              </Button>
+
+              <TextField
+                id="outlined-basic"
+                label="Precio por metro de confort"
+                variant="outlined"
+                value={precioPorMetroConfort}
+                style={{ backgroundColor: "white" }}
+                disabled
+              />
+            </div>
+          </CardActions>
+        </Card>
       </div>
     </main>
+      <Footer />
+    </>
   );
 }
